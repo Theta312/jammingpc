@@ -1,23 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+
+import './App.module.css';
+import styles from './App.module.css';
+import React, { useState, useEffect, useCallback } from 'react';
+import NotLogged from './notLogged.js';
+import Spotify from './spotify.js';
+import SearchBar from './Components/Searchbar/Searchbar.js';
+import SearchResult from './Components/SearchResults/SearchResult.js';
 
 function App() {
+ //useStates
+  const [accessToken, setAccessToken] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
+  const [playList, setPlaylist] = useState([]);
+  const [playlistName, setPlaylistName] = useState('');
+
+ //eventHandlers
+  const handlePlaylist = item => setPlaylist((prev) => [...prev, item]);
+  const handleDelete = () => {};
+
+
+  const handleToken = async() => {
+    try {
+      const token = await Spotify.getAccessToken();
+      setAccessToken(token);
+    } catch(e) {
+      console.log(e);
+    }
+ };
+
+  const search = useCallback((term) => {
+  Spotify.search(term).then(setSearchResults);
+}, []);
+
+
+  console.log(searchResults);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <div className={styles.App}>
+       
+    {!accessToken ? <NotLogged onClick={handleToken}/> : 
+    <div>
+      <div>
+        <SearchBar onSearch={search}/>
+      </div>
+      <div>
+        <SearchResult handlePlaylist={handlePlaylist} searchResult={searchResults}  />
+      </div>
+      <div></div>
+      <div></div>
+    </div>
+    
+    }
     </div>
   );
 }
