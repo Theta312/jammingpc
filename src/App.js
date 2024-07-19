@@ -20,16 +20,18 @@ function App() {
 
  //eventHandlers
   const handlePlaylist = item => setPlaylist((prev) => {
-    if (prev.includes(item)) {
-      return [...prev]
-    } else {
-      return [...prev, item]
-    }
+   if (playList.some(prev => prev.id === item.id)) {
+    return [...prev];
+   } return [...prev, item];
   });
 
   const handlePlaylistName = item => setPlaylistName(item);
 
-  const handleDelete = () => {};
+  const handleDelete = song => {
+    setPlaylist((prev) => {
+      return prev.filter(item => item.id !== song.id)
+    })
+  };
 
   const handleToken = async() => {
     try {
@@ -44,9 +46,8 @@ function App() {
   Spotify.search(term).then(setSearchResults);
 }, []);
 
-
-  console.log(searchResults);
-  console.log(playList);
+console.log(searchResults);
+console.log(playList);
   
   return (
     
@@ -62,7 +63,7 @@ function App() {
       </div>
       <div>
         <Playlist playList={playList} playlistName={playlistName} handlePlaylistName={handlePlaylistName}
-        handleDelete />
+        handleDelete={handleDelete} />
       </div>
       <div></div>
     </div>

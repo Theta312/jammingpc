@@ -19,7 +19,8 @@ export default function Tracklist({playList, playlistName, handlePlaylistName, h
 
     return (
         <>
-            <Track />
+            <Track playList={playList} playlistName={playlistName} 
+             handleDelete={handleDelete} onChange={handleChange} onClick={handleClick} term={term}/>
         </>
     )
 };
