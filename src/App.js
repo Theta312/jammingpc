@@ -6,6 +6,10 @@ import NotLogged from './notLogged.js';
 import Spotify from './spotify.js';
 import SearchBar from './Components/Searchbar/Searchbar.js';
 import SearchResult from './Components/SearchResults/SearchResult.js';
+import Playlist from './Components/Playlist/Playlist.js';
+
+
+
 
 function App() {
  //useStates
@@ -15,9 +19,17 @@ function App() {
   const [playlistName, setPlaylistName] = useState('');
 
  //eventHandlers
-  const handlePlaylist = item => setPlaylist((prev) => [...prev, item]);
-  const handleDelete = () => {};
+  const handlePlaylist = item => setPlaylist((prev) => {
+    if (prev.includes(item)) {
+      return [...prev]
+    } else {
+      return [...prev, item]
+    }
+  });
 
+  const handlePlaylistName = item => setPlaylistName(item);
+
+  const handleDelete = () => {};
 
   const handleToken = async() => {
     try {
@@ -34,6 +46,7 @@ function App() {
 
 
   console.log(searchResults);
+  console.log(playList);
   
   return (
     
@@ -47,7 +60,10 @@ function App() {
       <div>
         <SearchResult handlePlaylist={handlePlaylist} searchResult={searchResults}  />
       </div>
-      <div></div>
+      <div>
+        <Playlist playList={playList} playlistName={playlistName} handlePlaylistName={handlePlaylistName}
+        handleDelete />
+      </div>
       <div></div>
     </div>
     
