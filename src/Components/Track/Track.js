@@ -1,13 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 
 
 export default function Track({playList, playlistName, handleDelete, 
-    onChange, onClick, term}) {
-
-
-    
-
+    onChange, onClick, term, savePlaylist}) {
 
     return (
         <div>
@@ -17,7 +13,7 @@ export default function Track({playList, playlistName, handleDelete,
                         {!playlistName ? 'Playlist' : playlistName}
                     </label>
                     <input type='text' id='playlist' value={term} name='playlistName' onChange={onChange} />
-                    <button type='submit'>Rename Playlist</button>
+                    <button type='submit' >Rename Playlist</button>
                 </form>
             </div>
             <div>
@@ -35,8 +31,9 @@ export default function Track({playList, playlistName, handleDelete,
                 }
             </div>
             <div>
-                <button>Save Playlist To Spotify</button>
+                <button type='button' onClick={savePlaylist} >Save Playlist To Spotify</button>
             </div>
+            
         </div>
     )
 }

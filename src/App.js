@@ -46,9 +46,20 @@ function App() {
   Spotify.search(term).then(setSearchResults);
 }, []);
 
-console.log(searchResults);
-console.log(playList);
-  
+
+
+
+  const savingPlaylist = useCallback(() => {
+    const trackUris = playList.map((track) => track.uri);
+    Spotify.savePlaylist(playlistName, trackUris).then((response) => {
+      setPlaylistName("Playlist");
+      setPlaylist([]);
+    });
+  }, [playlistName, playList]);
+
+
+
+
   return (
     
     <div className={styles.App}>
@@ -63,7 +74,7 @@ console.log(playList);
       </div>
       <div>
         <Playlist playList={playList} playlistName={playlistName} handlePlaylistName={handlePlaylistName}
-        handleDelete={handleDelete} />
+        handleDelete={handleDelete} savePlaylist={savingPlaylist} />
       </div>
       <div></div>
     </div>

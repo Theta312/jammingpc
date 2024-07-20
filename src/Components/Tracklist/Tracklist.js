@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Track from '../Track/Track.js';
 
 
-export default function Tracklist({playList, playlistName, handlePlaylistName, handleDelete}) {
+export default function Tracklist({playList, playlistName, handlePlaylistName, handleDelete, savePlaylist}) {
     const [term, setTerm] = useState('');
     const handleChange = ({target}) => setTerm(target.value);
 
@@ -18,9 +18,10 @@ export default function Tracklist({playList, playlistName, handlePlaylistName, h
 
 
     return (
-        <>
+        <div>
             <Track playList={playList} playlistName={playlistName} 
-             handleDelete={handleDelete} onChange={handleChange} onClick={handleClick} term={term}/>
-        </>
+             handleDelete={handleDelete} onChange={handleChange} onClick={handleClick} term={term} 
+             savePlaylist={savePlaylist} />
+        </div>
     )
 };
