@@ -1,0 +1,129 @@
+.playlist {
+    height: 680px;
+    border-radius: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80%;
+    position: relative;
+    left: 140px;
+}
+
+.playlistName {
+    min-width: 100%;
+    height: 100px;
+}
+
+.playlistName form {
+    height: 100px;
+    min-width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.playlistName label {
+    position: relative;
+    bottom: 5px;
+}
+
+.playlistName input {
+    border-radius: 15px;
+    height: 32px;
+    min-width: 60%;
+    font-size: 24px;
+    text-align: center;
+
+}
+
+.playlistName button {
+    cursor: pointer;
+    border-radius: 15px;
+    height: 30px;
+    font-size: 16px;
+    padding: 5px;
+    background-color: lightblue;
+}
+
+.playlistName button:hover {
+    box-shadow: 4px 4px 4px black;
+}
+
+.playlistName button:active {
+    position: relative;
+    top: 4px;
+    left: 4px;
+}
+
+.playlistSongs {
+    border: 3px solid black;
+    border-radius: 15px;
+    min-width: 100%;
+    overflow-y: scroll;
+    border-radius: 15px;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.playlistSongs::-webkit-scrollbar {
+    background-color: #3b0054;
+}
+
+.playlistSongs::-webkit-scrollbar-button {
+    background-color: black;
+    border-radius: 15px;
+}
+
+.playlistSongs::-webkit-scrollbar-thumb {
+    background-color: #4a006a;
+    border-radius: 10px;
+}
+
+.addedSongs {
+    border: 2px solid silver;
+    border-radius: 5px;
+    display: inline-flex;
+    min-width: 100%;
+    justify-content: center;
+    opacity: .9;
+    background-color: #4a006a;
+}
+
+.addedSongs h4 {
+    font-size: 24px;
+    font-family: "Margarine", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: black;
+}
+.addedSongs button {
+    height: 60px;
+    width: 40px;
+    position: relative;
+    top: 60px;
+    left: 100px;
+    font-size: 32px;
+    border-radius: 10px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    background-color: #3b0054;
+    cursor: pointer;
+}
+
+.addedSongs button:hover {
+    box-shadow: 2px 2px 2px silver;
+}
+
+.save {
+    position: relative;
+    top: 30px;
+    font-size: 22px;
+    border-radius: 15px;
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.save:hover {
+    box-shadow: 4px 4px 4px black;
+}

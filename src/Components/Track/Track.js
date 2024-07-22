@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
-
+import styles from './Track.module.css';
 
 
 export default function Track({playList, playlistName, handleDelete, 
     onChange, onClick, term, savePlaylist}) {
 
     return (
-        <div>
-            <div>
+        <div className={styles.playlist}>
+            <div className={styles.playlistName} >
                 <form onSubmit={onClick}>
                     <label for='playlist'>
                         {!playlistName ? 'Playlist' : playlistName}
@@ -16,14 +16,16 @@ export default function Track({playList, playlistName, handleDelete,
                     <button type='submit' >Rename Playlist</button>
                 </form>
             </div>
-            <div>
+            <div className={styles.playlistSongs}>
                 {
                     playList.map(song => {
                        return ( 
-                        <div key={song.id}>
-                            <h4>{song.name}</h4>
-                            <h5>by {song.artist}</h5>
-                            <h5>{song.album}</h5>
+                        <div key={song.id} className={styles.addedSongs}>
+                            <div className={styles.information}>
+                                <h4>{song.name}</h4>
+                                <h5>by {song.artist}</h5>
+                                <h5>{song.album}</h5>
+                            </div>
                             <button type='button' onClick={() => handleDelete(song)}>-</button>
                         </div>
                        )
@@ -31,7 +33,7 @@ export default function Track({playList, playlistName, handleDelete,
                 }
             </div>
             <div>
-                <button type='button' onClick={savePlaylist} >Save Playlist To Spotify</button>
+                <button className={styles.save} type='button' onClick={savePlaylist} >Save Playlist To Spotify</button>
             </div>
             
         </div>
