@@ -1,7 +1,7 @@
 
 import './App.module.css';
 import styles from './App.module.css';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import NotLogged from './notLogged.js';
 import Spotify from './spotify.js';
 import SearchBar from './Components/Searchbar/Searchbar.js';
@@ -62,24 +62,23 @@ function App() {
 
   return (
     
-    <div className={styles.App}>
-       
-    {!accessToken ? <NotLogged onClick={handleToken}/> : 
-    <div>
-      <div>
-        <SearchBar onSearch={search}/>
+    <div className={styles.App}> 
+      {!accessToken ? <NotLogged className={styles.notLogged} onClick={handleToken}/> : 
+      <div className={styles.Main} >
+        <h2 className={styles.header} >Ja<span>mmm</span>ing</h2>
+        <div className={styles.searchbar} >
+          <SearchBar onSearch={search}/>
+        </div>
+        <div className={styles.searchResults} >
+          <SearchResult handlePlaylist={handlePlaylist} searchResult={searchResults}  />
+        </div>
+        <div className={styles.playlist} >
+          <Playlist playList={playList} playlistName={playlistName} handlePlaylistName={handlePlaylistName}
+          handleDelete={handleDelete} savePlaylist={savingPlaylist} />
+        </div>
+        <div></div>
       </div>
-      <div>
-        <SearchResult handlePlaylist={handlePlaylist} searchResult={searchResults}  />
-      </div>
-      <div>
-        <Playlist playList={playList} playlistName={playlistName} handlePlaylistName={handlePlaylistName}
-        handleDelete={handleDelete} savePlaylist={savingPlaylist} />
-      </div>
-      <div></div>
-    </div>
-    
-    }
+      }
     </div>
   );
 }
