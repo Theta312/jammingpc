@@ -3,7 +3,7 @@ import styles from './SearchResult.module.css';
 
 
 
-export default function SearchResult({handlePlaylist, searchResult}) {
+export default function SearchResult({handlePlaylist, searchResult, deleteResult}) {
 
 
     return (
@@ -21,7 +21,10 @@ export default function SearchResult({handlePlaylist, searchResult}) {
                                     <p>By: {song.artist}</p>
                                     <p>Album: {song.album}</p>
                                 </div>
-                                <button type='button' onClick={() => handlePlaylist(song)} >+</button>                                
+                                <button type='button' onClick={() => {
+                                    handlePlaylist(song);
+                                    deleteResult(song)
+                                }} >+</button>                                
                             </div>
                         )
                     })

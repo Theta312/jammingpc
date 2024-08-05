@@ -43,10 +43,13 @@ const Spotify = {
         name: track.name,
         artist: track.artists[0].name,
         album: track.album.name,
-        uri: track.uri
+        uri: track.uri,
+        song: track.href
       }));
     });
   },
+
+
 
   savePlaylist(name, trackUris) {
     if (!name || !trackUris.length) {

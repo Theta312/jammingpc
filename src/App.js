@@ -1,5 +1,4 @@
 
-import './App.module.css';
 import styles from './App.module.css';
 import React, { useState, useCallback } from 'react';
 import NotLogged from './notLogged.js';
@@ -33,6 +32,12 @@ function App() {
     })
   };
 
+  const deleteResult = song => {
+    setSearchResults((prev) => {
+      return prev.filter(item => item.id !== song.id)
+    })
+  }
+
   const handleToken = async() => {
     try {
       const token = await Spotify.getAccessToken();
@@ -51,13 +56,13 @@ function App() {
 
   const savingPlaylist = useCallback(() => {
     const trackUris = playList.map((track) => track.uri);
-    Spotify.savePlaylist(playlistName, trackUris).then((response) => {
+    Spotify.savePlaylist(playlistName, trackUris).then(() => {
       setPlaylistName("Playlist");
       setPlaylist([]);
     });
   }, [playlistName, playList]);
 
-
+ 
 
 
   return (
@@ -70,7 +75,7 @@ function App() {
           <SearchBar onSearch={search}/>
         </div>
         <div className={styles.searchResults} >
-          <SearchResult handlePlaylist={handlePlaylist} searchResult={searchResults}  />
+          <SearchResult handlePlaylist={handlePlaylist} searchResult={searchResults} deleteResult={deleteResult} />
         </div>
         <div className={styles.playlist} >
           <Playlist playList={playList} playlistName={playlistName} handlePlaylistName={handlePlaylistName}
