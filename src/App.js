@@ -29,12 +29,14 @@ function App() {
   const handleDelete = song => {
     setPlaylist((prev) => {
       return prev.filter(item => item.id !== song.id)
-    })
+    });
+    setSearchResults((prev) => [song, ...prev]);
   };
 
+  console.log(searchResults)
   const deleteResult = song => {
     setSearchResults((prev) => {
-      return prev.filter(item => item.id !== song.id)
+       return prev.filter(item => item.id !== song.id)
     })
   }
 
