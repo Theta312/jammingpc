@@ -20,6 +20,11 @@ export default function SearchResult({handlePlaylist, searchResult, deleteResult
                                     <h4>{song.name}</h4>
                                     <p>By: {song.artist}</p>
                                     <p>Album: {song.album}</p>
+                                    <figure>
+                                        <audio controls src={song.src} type='audio' >
+                                            <a>Song Preview</a>;
+                                        </audio>
+                                    </figure>
                                 </div>
                                 <button type='button' onClick={() => {
                                     handlePlaylist(song);

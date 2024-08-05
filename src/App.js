@@ -33,7 +33,6 @@ function App() {
     setSearchResults((prev) => [song, ...prev]);
   };
 
-  console.log(searchResults)
   const deleteResult = song => {
     setSearchResults((prev) => {
        return prev.filter(item => item.id !== song.id)
