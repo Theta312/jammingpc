@@ -22,7 +22,7 @@ export default function SearchResult({handlePlaylist, searchResult, deleteResult
                                     <p>Album: {song.album}</p>
                                     <figure>
                                         <audio controls src={song.src} type='audio' >
-                                            <a>Song Preview</a>;
+                                            <figcaption>Song Preview</figcaption>
                                         </audio>
                                     </figure>
                                 </div>

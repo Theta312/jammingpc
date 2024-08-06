@@ -1,7 +1,7 @@
 const clientId = '739d8a6d32984bd8ab2358283037e890'; // Insert client ID here.
 const redirectUri = 'http://localhost:3000'; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
-const Auth_ENDPOINT = 'https://accounts.spotify.com/authorize';
-const Response_type = 'token';
+//const Auth_ENDPOINT = 'https://accounts.spotify.com/authorize';
+//const Response_type = 'token';
 
 
 let accessToken;
